@@ -13,7 +13,7 @@ export async function dbConnect() {
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
-      dbName: "uchoice",
+      dbName: "uchoice", // তোমার ডাটাবেস নাম
       bufferCommands: false,
     });
   }
