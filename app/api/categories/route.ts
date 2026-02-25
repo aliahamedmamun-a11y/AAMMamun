@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import dbConnect from "@/lib/db";
+import { dbConnect } from "@/lib/db";   // এখন named import ব্যবহার করো
 import Category from "@/models/Category";
 
 export async function GET() {
