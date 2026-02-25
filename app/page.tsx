@@ -4,7 +4,7 @@ export default function HomePage() {
     { name: "T-Shirt", icon: "/image/C t-shirt.png" },
     { name: "Shart", icon: "/image/c shart.png" },
     { name: "Panjabi", icon: "/image/C panjabi.png" },
-    { name: "Jeans", icon: "/image/jeans.png" }, // পরে নতুন ইমেজ যোগ করতে পারো
+    { name: "Jeans", icon: "/image/jeans.png" },
     { name: "Watch", icon: "/image/watch.png" },
     { name: "Bag", icon: "/image/bag.png" },
     { name: "Mobile", icon: "/image/mobile.png" },
@@ -23,20 +23,20 @@ export default function HomePage() {
       </section>
 
       {/* Subcategory Section */}
-      <section className="py-12 px-6 bg-pink-100 bg-opacity-50 backdrop-blur-md rounded-lg mt-8">
+      <section className="py-12 px-6 mt-8">
         <h2 className="text-2xl font-bold mb-6 text-center">Explore Subcategories</h2>
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-9 gap-4 bg-pink-200 bg-opacity-40 backdrop-blur-lg rounded-xl p-6 shadow-lg">
           {subcategories.map((sub) => (
             <div
               key={sub.name}
-              className="flex flex-col items-center bg-white bg-opacity-30 backdrop-blur-lg rounded-full p-4 shadow-lg hover:scale-105 transition"
+              className="flex flex-col items-center"
             >
               <img
                 src={sub.icon}
                 alt={sub.name}
-                className="w-20 h-20 rounded-full border shadow"
+                className="w-16 h-16 rounded-full border shadow"
               />
-              <p className="mt-2 text-sm font-medium">{sub.name}</p>
+              <p className="mt-2 text-xs font-medium">{sub.name}</p>
             </div>
           ))}
         </div>
