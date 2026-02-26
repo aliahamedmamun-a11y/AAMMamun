@@ -9,10 +9,14 @@ export default function CategoryPage() {
   useEffect(() => {
     fetch("/api/categories")
       .then(res => res.json())
-      .then(data => setCategory(data[0])); // ধরলাম প্রথম ক্যাটেগরি দেখাবো
+      .then(data => {
+        if (data.length > 0) {
+          setCategory(data[0]); // প্রথম ক্যাটেগরি দেখাবে
+        }
+      })
+      .catch(err => console.error("Error fetching categories:", err));
   }, []);
 
-  // Auto image slider
   useEffect(() => {
     if (category?.heroImages?.length > 0) {
       const interval = setInterval(() => {
@@ -22,7 +26,6 @@ export default function CategoryPage() {
     }
   }, [category]);
 
-  // Pagination logic (9 per page)
   const subcategoriesPerPage = 9;
   const paginatedSubcategories = category?.subcategories?.slice(
     page * subcategoriesPerPage,
@@ -31,7 +34,6 @@ export default function CategoryPage() {
 
   return (
     <div>
-      {/* Subcategory Section */}
       {category && (
         <section className="py-8 px-6">
           <div className="grid grid-cols-9 gap-4 bg-pink-200 bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg">
@@ -42,10 +44,10 @@ export default function CategoryPage() {
                   alt={sub.name}
                   className="w-16 h-16 rounded-full border shadow"
                 />
+                <p className="mt-2 text-sm">{sub.name}</p>
               </div>
             ))}
           </div>
-          {/* Pagination Controls */}
           <div className="flex justify-center mt-4 gap-4">
             <button
               disabled={page === 0}
@@ -65,7 +67,6 @@ export default function CategoryPage() {
         </section>
       )}
 
-      {/* Hero Section */}
       {category && (
         <section className="relative bg-gradient-to-r from-pink-400 to-pink-600 text-white py-16 text-center mt-8">
           <div className="absolute inset-0">
